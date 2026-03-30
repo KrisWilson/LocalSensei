@@ -76,7 +76,7 @@ class WindowCapturer:
                 sct_img = sct.grab(capture_region)
                 mss.tools.to_png(sct_img.rgb, sct_img.size, output=output_path)
 
-            ui.display_good(f"Zrzut OK ({width}x{height})")
+            ui.display_good(f"[Capture Image] Screenshoted ({width}x{height})")
             return output_path
 
         except Exception as e:

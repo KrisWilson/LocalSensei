@@ -20,7 +20,7 @@ ui.display_request("[Startup] Checking for Ollama's model...")
 gpumodel = GPUModel(config.models.gpu_model)
 
 ui.display_request(f"[Startup] Loading {"CPU" if config.app.cpu_instead_npu else "NPU"} model...")
-#npumodel = NPUModel(config.models.npu_model, config.app.cpu_instead_npu)
+npumodel = NPUModel(config.models.npu_model, config.app.cpu_instead_npu)
 
 ui.display_request(f"[Startup] Loading screen-shot system")
 capturer = WindowCapturer()
@@ -39,6 +39,6 @@ async def root():
 @app.get("/captureAndAnalyze")
 async def captureAndAnalyze():
     pngpath = capturer.capture_active_window(config.app.screenshot_dir + time.ctime())
-    #npureply = npumodel.message(pngpath)
-    #ui.display_request(f"[Capture] {npureply}")
+    npureply = npumodel.message(pngpath)
+    ui.display_request(f"[Capture - NPU] {npureply}")
     #uvicorn.run("src.main:app", host="127.0.0.1", port=8005, reload=True)
