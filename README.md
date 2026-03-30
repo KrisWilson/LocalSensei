@@ -1,5 +1,6 @@
 ## Local Sensei 
-#### Background Daemon taking screenshots at your command, sent to local VLM (hosted at your NPU/CPU/GPU), describe then send reflection to local coding LLM (hosted at your GPU). Create successful code and automatically copy into copyboard <3
+#### Background Daemon taking screenshots at your command, sent to local VLM (hosted at your NPU/CPU/GPU), VLM-describe then send reflection to local coding LLM (hosted at your GPU). 
+#### Create successful code and automatically copy into copyboard <3
 
 
 ![Showcase](https://github.com/KrisWilson/LocalSensei/blob/master/showcase.gif)
@@ -12,6 +13,7 @@
 * Recommended use case with Tilda or Yakuake (drop-down terminal)
 * python3 with libs in requirements.txt
 
+
 ### Example usage GPU (12GB VRAM):
 Bind Client.py under some key with xbindkeys to trigger action
 
@@ -20,8 +22,8 @@ Bind Client.py under some key with xbindkeys to trigger action
 * [OpenVino NPU/CPU] same as InternVL and Phi-3.5
 * The best option is only to put GLM-OCR into VRAM, but it won't be at CPU/NPU (it's not compiled yet for OpenVINO for INTEL)
 
-For GPU:
+For LLM GPU:
 * Ollama with Qwen3-8b (https://ollama.com/library/qwen3) ~ 6GB VRAM
 
-For GPU2:
-* Ollama with Gemma-3-4b (VLM) (https://ollama.com/library/glm-ocr) ~ 4GB VRAM
+For VLM GPU:
+* Ollama with GLM-OCR (VisionLM) (https://ollama.com/library/glm-ocr) ~ 4GB VRAM
