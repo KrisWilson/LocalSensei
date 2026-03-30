@@ -12,6 +12,9 @@
 ### Example usage for NPU (2GB RAM) and GPU (8GB VRAM):
 Bind Client.py under some key with xbindkeys to trigger action
 
+* Gemma 3 4b is unusable for recognizing code from IDE
+* same as InternVL and Phi-3.5
+* The best option is only to put GLM-OCR into VRAM but it won't be at CPU/NPU (its not compiled yet for OpenVINO for INTEL)
 
 For GPU:
 * Ollama with Qwen3-8b (https://ollama.com/library/qwen3) ~ 6GB VRAM 4k context

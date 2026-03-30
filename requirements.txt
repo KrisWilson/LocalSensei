@@ -11,3 +11,7 @@ numpy
 openvino
 pillow
 requests
+transformers
+optimum
+torchvision
+sentencepiece

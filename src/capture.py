@@ -49,7 +49,7 @@ class WindowCapturer:
             return None
 
         x, y, w, h = geo
-
+        ## TODO: ROZRÓŻNIENIE ekranu, aktualnie łapie tylko ekran 0.
         try:
             with mss.mss() as sct:
                 root_screen = sct.monitors[0]

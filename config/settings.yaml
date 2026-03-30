@@ -1,7 +1,7 @@
 models:
   gpu_model: "qwen3:8b"
-  npu_model: "gemma-3-4b-it-int4-cw-ov"
+  npu_model: "GOT-OCR-2.0-OV-INT4"
 app:
   debug: true
-  cpu_instead_npu: false
+  cpu_instead_npu: true
   screenshot_dir: "screenshot/"

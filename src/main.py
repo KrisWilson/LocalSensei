@@ -1,12 +1,13 @@
 import time
 
 from fastapi import FastAPI
+from plyer import notification
+
 from src.config import Config
 from src.brain import GPUModel
 from src.ui import AssistantUI
 from src.vision import NPUModel
 from src.capture import WindowCapturer
-import uvicorn
 
 app = FastAPI()
 #if __name__ == "__main__":
@@ -25,6 +26,14 @@ npumodel = NPUModel(config.models.npu_model, config.app.cpu_instead_npu)
 ui.display_request(f"[Startup] Loading screen-shot system")
 capturer = WindowCapturer()
 
+
+notification.notify(
+    title='Local Sensei',
+    message='System is ready to action',
+    app_name='LocalSensei',
+    timeout=5
+)
+
 @app.get("/status")
 async def status():
     return {"GPU status": "GPU " + config.models.gpu_model + " is online",
@@ -37,7 +46,7 @@ async def root():
     return {"about", "blank"}
 
 @app.get("/captureAndAnalyze")
-async def captureAndAnalyze():
+async def captureanalyze():
     pngpath = capturer.capture_active_window(config.app.screenshot_dir + time.ctime())
     npureply = npumodel.message(pngpath)
     ui.display_request(f"[Capture - NPU] {npureply}")
