@@ -15,3 +15,5 @@ transformers
 optimum
 torchvision
 sentencepiece
+pyperclip
+plyer

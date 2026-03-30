@@ -20,6 +20,7 @@ class GPU2Model:
             ollama.pull(ollama_model)
             ui.display_good(f"[Startup] Ollama model {ollama_model}  downloaded")
     def message(self, imagepath):
+        ui.display_request(f"[OCR] {self.ollama_model} reading {imagepath}")
         response = ollama.chat(
             model=self.ollama_model,
             ## TODO: BETTER PROMPT for taking only code and logs
@@ -28,4 +29,4 @@ class GPU2Model:
             ],
         )
 #       print(response["message"]['role'])
-        print(response["message"]['content'])
+        return response["message"]['content']

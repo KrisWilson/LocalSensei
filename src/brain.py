@@ -20,10 +20,11 @@ class GPUModel:
             ollama.pull(ollama_model)
             ui.display_good("[Startup] Ollama model downloaded")
     def message(self, message):
+        ui.display_request(f"[LLM] {self.ollama_model} doing job...")
         response: ChatResponse = chat(model=self.ollama_model, messages=[
         {
             'role': 'user',
-            'content': message,
+            'content': "Please write ONLY CODE, there is a not working code: \n\n" + message,
         },
         ])
         return response.message.content

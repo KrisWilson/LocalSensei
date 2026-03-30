@@ -1,6 +1,9 @@
 ## Local Sensei 
 #### Background Daemon taking screenshots at your command, sent to local VLM (hosted at your NPU/CPU/GPU), describe then send reflection to local coding LLM (hosted at your GPU). Create successful code and automatically copy into copyboard <3
 
+
+![Showcase](https://github.com/KrisWilson/LocalSensei/blob/master/showcase.gif)
+
 ### Requirements:
 * Linux with X11/Wayland
 * xbindkeys or other mapping key→command software
