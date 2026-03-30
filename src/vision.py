@@ -29,13 +29,13 @@ def load_image(image_file):
     image_data = np.array(image.getdata()).reshape(1, image.size[1], image.size[0], 3).astype(np.uint8)
     return ov.Tensor(image_data)
 
-prompt = """<start_of_turn>user
-<image>
-Jesteś precyzyjnym systemem OCR. Przepisz CAŁY kod z obrazka. 
-Nie opisuj systemu, po prostu podaj kod źródłowy. 
-ZAKAZ POWTARZANIA TYCH SAMYCH LINII.<end_of_turn>
-<start_of_turn>model
-"""
+#prompt = """<start_of_turn>user
+#<image>
+#Jesteś precyzyjnym systemem OCR. Przepisz CAŁY kod z obrazka.
+#Nie opisuj systemu, po prostu podaj kod źródłowy.
+#ZAKAZ POWTARZANIA TYCH SAMYCH LINII.<end_of_turn>
+#<start_of_turn>model
+#"""
 
 
 prompt = "Przepisz sam kod z IDE. Nie opisuj, nie komentuj. Tylko przepisz."

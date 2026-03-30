@@ -4,7 +4,7 @@ from PIL import Image
 from io import BytesIO
 import numpy as np
 import openvino as ov
-
+###https://huggingface.co/OpenVINO/gemma-3-4b-it-int4-cw-ov
 device = "NPU"
 pipe = ov_genai.VLMPipeline("../models/gemma-3-4b-it-int4-cw-ov", device)
 

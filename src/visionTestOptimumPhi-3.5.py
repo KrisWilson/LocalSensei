@@ -2,7 +2,7 @@ from PIL import Image
 import requests
 from optimum.intel.openvino import OVModelForVisualCausalLM
 from transformers import AutoProcessor, TextStreamer
-
+##https://huggingface.co/OpenVINO/Phi-3.5-vision-instruct-int4-ov
 model_id = "../models/Phi-3.5-vision-instruct-int4-ov"
 
 processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)

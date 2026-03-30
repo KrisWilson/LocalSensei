@@ -7,6 +7,7 @@ from src.config import Config
 from src.brain import GPUModel
 from src.ui import AssistantUI
 from src.vision import NPUModel
+from src.visionOllama import GPU2Model
 from src.capture import WindowCapturer
 
 app = FastAPI()
@@ -17,11 +18,15 @@ ui = AssistantUI() # rich console instance
 ui.display_request("[Startup] Loading config...")
 config = Config.load()
 
-ui.display_request("[Startup] Checking for Ollama's model...")
+ui.display_request(f"[Startup] Checking for Ollama's {config.models.gpu_model} model...")
 gpumodel = GPUModel(config.models.gpu_model)
 
-ui.display_request(f"[Startup] Loading {"CPU" if config.app.cpu_instead_npu else "NPU"} model...")
-npumodel = NPUModel(config.models.npu_model, config.app.cpu_instead_npu)
+if config.app.use_twice_gpu:
+    ui.display_request(f"[Startup] Loading GPU model {config.models.gpu2_model}...")
+    npumodel = GPU2Model(config.models.gpu2_model)
+else:
+    ui.display_request(f"[Startup] Loading {"CPU" if config.app.cpu_instead_npu else "NPU"} model...")
+    npumodel = NPUModel(config.models.npu_model, config.app.cpu_instead_npu)
 
 ui.display_request(f"[Startup] Loading screen-shot system")
 capturer = WindowCapturer()

@@ -2,7 +2,7 @@ from PIL import Image
 import requests
 from optimum.intel.openvino import OVModelForVisualCausalLM
 from transformers import AutoTokenizer, TextStreamer
-
+##https://huggingface.co/OpenVINO/InternVL2-2B-int4-ov
 model_id = "../models/InternVL2-2B-int4-ov"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
