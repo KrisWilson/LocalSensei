@@ -1,0 +1,13 @@
+fastapi~=0.135.2
+PyYAML~=6.0.3
+ollama~=0.6.1
+pydantic
+rich
+openvino-genai
+uvicorn
+mss
+python3-xlib
+numpy
+openvino
+pillow
+requests

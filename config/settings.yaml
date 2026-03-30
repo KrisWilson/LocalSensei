@@ -1,0 +1,7 @@
+models:
+  gpu_model: "qwen3:8b"
+  npu_model: "gemma-3-4b-it-int4-cw-ov"
+app:
+  debug: true
+  cpu_instead_npu: false
+  screenshot_dir: "screenshot/"
