@@ -29,7 +29,7 @@ async def lifespan(app: FastAPI):
     models["gpumodel"] = GPUModel(config.models.gpu_model)
 
     if config.app.use_twice_gpu:
-        ui.display_request(f"[Startup] Loading GPU model {config.models.gpu2_model}...")
+        ui.display_request(f"[Startup] Loading Ollama VLM model {config.models.gpu2_model}...")
         models["npumodel"] = GPU2Model(config.models.gpu2_model)
     else:
         ui.display_request(f"[Startup] Loading {"CPU" if config.app.cpu_instead_npu else "NPU"} model...")
@@ -40,9 +40,10 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get("/status")
 async def status():
-    return {"GPU status": "GPU " + config.models.gpu_model + " is online",
-            "NPU status": "NPU " + config.models.npu_model + " is online",
-            "CPU use": config.app.cpu_instead_npu
+    return {"CPU over NPU?" : config.app.cpu_instead_npu,
+            "GPU twice (Ollama LLM + VLM)" : config.app.use_twice_gpu,
+            "LLM Model": config.models.gpu_model,
+            "VLM Model": config.models.npu_model,
             }
 
 @app.get("/")
@@ -52,6 +53,14 @@ async def root():
 @app.get("/captureAndAnalyze")
 async def captureanalyze():
     pngpath = models["capturer"].capture_active_window(config.app.screenshot_dir + time.ctime())
+
+    notification.notify(
+        title='Local Sensei',
+        message='Screenshot taken - identifying',
+        app_name='LocalSensei',
+        timeout=5
+    )
+
     npureply = models["npumodel"].message(pngpath)
  #   ui.display_request(f"[NPU - reply] {npureply}")
     gpureply = models["gpumodel"].message(npureply)
